@@ -15,7 +15,7 @@ class Sidemenu extends HTMLElement {
                     background-color: lightblue;
                     height: 100vh;
                     width: 150px;
-                    margin: 0;
+                    
                 }
             </style>
             <div class="sidemenu">
