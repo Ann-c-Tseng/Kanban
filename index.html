@@ -5,18 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kanban Project</title>
 </head>
-<body>
-  <!-- Use the custom element tag with the title and links attributes -->
-  <responsive-navbar 
-    title="My Website" 
-    links='[{"text":"Add New Tasks","href":"#"}]'
-  ></responsive-navbar>
+<body style="all: unset;">
+    <nav-bar></nav-bar>
+    <div style="display: flex;">
+      <side-menu></side-menu> 
+      <todo-list></todo-list>
+      <doing-list></doing-list>
+      <done-list></done-list>
+    </div>
 
-  <side-menu>
-  </side-menu>
-  
-    <!-- Import the script files that defines the custom element classes -->
-    <script src="./Components/Navbar/navbar.js"></script>
-    <script src="./Components/Sidemenu/sidemenu.js"></script>
+  <!-- Import the script files that defines the custom element classes -->
+  <script src="./Components/Navbar/navbar.js"></script>
+  <script src="./Components/Sidemenu/sidemenu.js"></script>
+  <script src="./Components/Lists/Todolist/todolist.js"></script>
+  <script src="./Components/Lists/Doinglist/doinglist.js"></script>
+  <script src="./Components/Lists/Donelist/donelist.js"></script>
 </body>
 </html>
