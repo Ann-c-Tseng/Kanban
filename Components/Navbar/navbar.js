@@ -27,7 +27,16 @@ class ResponsiveNavbar extends HTMLElement {
         //Select the elements from the shadow root
         this.navbar = this.shadowRoot.querySelector(".navbar");
         this.navButton = this.shadowRoot.querySelector(".navButton");
+
+        function popupTaskForm() {
+            alert("You clicked the button!");
+        }
+
+        this.navButton.addEventListener("click", popupTaskForm);
     }
+
+
+
 }
 
 //Register the custom element with the browser

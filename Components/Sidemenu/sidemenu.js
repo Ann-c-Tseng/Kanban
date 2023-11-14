@@ -15,7 +15,6 @@ class Sidemenu extends HTMLElement {
                     background-color: lightblue;
                     height: 100vh;
                     width: 150px;
-                    
                 }
             </style>
             <div class="sidemenu">
@@ -32,6 +31,74 @@ class Sidemenu extends HTMLElement {
         this.sidemenu = this.shadowRoot.querySelector(".sidemenu");
         this.sidemenuButton = this.shadowRoot.querySelector(".sidemenuButton");
         this.createNewBoardButton = this.shadowRoot.querySelector(".createNewBoardButton");
+
+        //Set basic empty board data array structure (board id, board name, todolist array, doinglist array, donelist array)
+        var todoList = [];
+        var doingList = [];
+        var doneList = []; 
+
+        function generateId() {
+            var boardId = "";
+            boardId = Math.random().toString(20).substring(2, 10);
+            return boardId;
+        }
+
+        function addBoard() {
+            var currentBoards = JSON.parse(localStorage.getItem('boards'));
+
+            var id = generateId();
+
+            //Create board object
+            var theBoard = {         
+                bId: id,
+                name: '<' + id + '>',
+                todoL: todoList,
+                doingL: doingList,
+                doneL: doneList
+                
+            };
+
+            //Add the new board to already existing currentBoards
+            console.log(currentBoards);
+            currentBoards[id] = theBoard;
+            console.log(currentBoards);
+
+            //Stringify boards object
+            var bString = JSON.stringify(currentBoards);
+
+            //Save to local storage
+            localStorage.setItem("boards", bString);
+            alert("new board added in local storage!");
+        }
+
+        function createBoard() {
+            if(window.localStorage.length !== 0) {
+                addBoard();
+            } else { 
+                var id = generateId();
+
+                //Create board object
+                var b = {
+                    bId: id,
+                    name: '<' + id + '>',
+                    todoL: todoList,
+                    doingL: doingList,
+                    doneL: doneList
+                };
+
+                //Set the object within the new localStorage object "boards"
+                var boards = {[b.bId]:b};
+
+                //Stringify boards object
+                var bString = JSON.stringify(boards);
+    
+                //Save to local storage
+                localStorage.setItem("boards", bString);
+                alert("first board created!");
+            }
+        }
+
+        this.createNewBoardButton.addEventListener("click", createBoard);
     }
 }
 
