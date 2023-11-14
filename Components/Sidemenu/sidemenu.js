@@ -18,8 +18,7 @@ class Sidemenu extends HTMLElement {
                 }
             </style>
             <div class="sidemenu">
-                <h4>All boards (1)</h4>
-                <button class="sidemenuButton" type="button">Test Board</button>
+                <h4 class="allBoardsH4Text">All boards (0)</h4>
                 <button class="createNewBoardButton" type="button">+ Create New Board</button>
             </div>
         `;
@@ -43,6 +42,21 @@ class Sidemenu extends HTMLElement {
             return boardId;
         }
 
+        function addNewBoardButton(boardId) {
+            var childButton = document.createElement("button");
+            childButton.id = "childBtn_"+boardId;
+            childButton.className = "boardBtn";
+            childButton.textContent = "Name: " + boardId;
+
+            //Append the button to the div
+            //TBD...
+            this.sidemenu.appendChild(childButton);
+        }
+
+        function updateBoardUI(boardId) {
+            addNewBoardButton(boardId)
+        }
+
         function addBoard() {
             var currentBoards = JSON.parse(localStorage.getItem('boards'));
 
@@ -60,6 +74,9 @@ class Sidemenu extends HTMLElement {
 
             //Add the new board to already existing currentBoards
             currentBoards[id] = theBoard;
+
+            //Update the board UI to reflect the new board added
+            updateBoardUI(theBoard.bId);
 
             //Stringify boards object
             var bString = JSON.stringify(currentBoards);
@@ -85,6 +102,9 @@ class Sidemenu extends HTMLElement {
 
                 //Set the object within the new localStorage object "boards"
                 var boards = {[b.bId]:b};
+
+                //Update the board UI to reflect the new board added
+                updateBoardUI(b.bId);
 
                 //Stringify boards object
                 var bString = JSON.stringify(boards);
