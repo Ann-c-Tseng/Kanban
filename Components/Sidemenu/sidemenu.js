@@ -59,16 +59,13 @@ class Sidemenu extends HTMLElement {
             };
 
             //Add the new board to already existing currentBoards
-            console.log(currentBoards);
             currentBoards[id] = theBoard;
-            console.log(currentBoards);
 
             //Stringify boards object
             var bString = JSON.stringify(currentBoards);
 
             //Save to local storage
             localStorage.setItem("boards", bString);
-            alert("new board added in local storage!");
         }
 
         function createBoard() {
@@ -94,7 +91,6 @@ class Sidemenu extends HTMLElement {
     
                 //Save to local storage
                 localStorage.setItem("boards", bString);
-                alert("first board created!");
             }
         }
 
