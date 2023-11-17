@@ -1,3 +1,42 @@
+:root {
+    --accent-color-purple: #645fc6;
+    --accent-color-purple-hover: #8178ff;
+    --panel-card-bg-color: #2c2c39;
+    --main-bg-color: #21212d;
+    --main-txt-color: rgb(255, 244, 244);
+    --secondary-txt-color: #848fa0;
+    --margin: 16px;
+    --padding: 16px;
+}
+
 #navBar {
-    background-color: pink;
+    background-color: var(--panel-card-bg-color);
+    display: flex;
+
+}
+
+#navBarTblTitle {
+    font-size: 1.5rem;
+    color: var(--main-txt-color);
+    position: relative;
+    left: 0;
+    margin: var(--margin);
+}
+
+#navBarBtn {
+    border: none;
+    background-color: var(--accent-color-purple);
+    color: var(--main-txt-color);
+    margin: var(--margin);
+    padding-left: var(--padding);
+    padding-right: var(--padding);
+    border-radius: 100px;
+    position: relative;
+    right: 0;
+    transition: background-color 0.3s;
+}
+
+#navBarBtn:hover {
+    background-color: var(--accent-color-purple-hover);
+    cursor: pointer;
 }

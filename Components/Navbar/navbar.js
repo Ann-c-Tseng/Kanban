@@ -1,1 +1,0 @@
-document.getElementById("navBar").innerText = "hello"
