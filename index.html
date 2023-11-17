@@ -5,25 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Style sheets -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300">
-  <link rel="stylesheet" href="./Components/Navbar/navBar.css"></link>
+  <link rel="stylesheet" href="./Components/navBar/navBar.css"></link>
+  <link rel="stylesheet" href="./Components/sideMenu/sideMenu.css"></link>
+  <link rel="stylesheet" href="./Components/theLists/theLists.css"></link>
+  <link rel="stylesheet" href="./Components/theLists/list.css"></link>
   <!-- End of sheets list -->
   <title>Kanban Project</title>
 </head>
-<body style="all: unset;">
-  <div id="navBar">
-    <H1 id="navBarTblTitle">Board Title</H1>
-    <button id="navBarBtn">+ Add New Task</button>
+<body style="all: unset; display: flex; flex-direction: row; background-color: #2c2c39;">
+  <div id="sideMenu">
+    <div id="boardsTitleCount">
+      <h3 id="boardsTitle">All boards</h3><h3 id="boardsCount">(0)</h3>
+    </div>
+    <button id="createNewBoardBtn"> ^ Create New Board </button>
   </div>
-  <div id="mainGrid" style="display: flex; background-color: grey;">
-    <div id="sideMenu"></div>
+  <div id="mainGrid" style="display: flex; flex-direction: column; background-color: grey;">
+    <div id="navBar">
+      <h1 id="navBarTblTitle">Board Title</h1>
+      <button id="navBarBtn">+ Add New Task</button>
+    </div>
     <div id="theLists">
-      <div id="todoList"></div>
-      <div id="doingList"></div>
-      <div id="doneList"></div>
+      <div class="list" id="todoList" style="background-color: green;"> <p>test</p> </div>
+      <div class="list" id="doingList" style="background-color: blue;"> <p>test</p> </div>
+      <div class="list" id="doneList" style="background-color: orange;"> <p>test</p> </div>
     </div>
   </div>
 </body>
 <!-- Script files -->
-<script src="./Components/Navbar/navBar.js"></script>
+<script src="./Components/navBar/navBar.js"></script>
 <!-- End of scripts list -->
 </html>
