@@ -1,7 +1,15 @@
-//We need to keep track of the number of boards + their corresponding names
-
-//Within each board, we need to keep track of the items in the todo list
-
-//Within each board, we need to keep track of the items in the doing list
-
-//Within each board, we need to keep track of the items in the done list
+/*
+- Each Board should have:
+1. Board id
+2. Board name
+3. Board Lists
+    - Each List should have
+        1. List id
+        2. List name
+        3. List Task items
+            - Each Task should have
+                1. Task id
+                2. Task title
+                3. Task description
+                4. Task subtasks
+                5. Task Status (i.e. what List this task belongs to on this particular board)
