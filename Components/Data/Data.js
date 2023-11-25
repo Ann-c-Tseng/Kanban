@@ -2,7 +2,9 @@
 - Each Board should have:
 1. Board id
 2. Board name
-3. Board Lists
+3. Board order value (when board was added)
+4. Board colour hex (changable later by user for individual customization)
+5. Board Lists
     - Each List should have
         1. List id
         2. List name
