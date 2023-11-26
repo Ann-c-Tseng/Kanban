@@ -1,56 +1,57 @@
 document.getElementById("createNewBoardBtn").addEventListener("click", createNewBoard);
 
 function createNewBoard() { 
-    //Check in local storage is empty, meaning no boards are in record yet.
-    if(window.localStorage.length === 0) {
-        //If no boards were created, then we can create the "Boards" key value pair for the first time, and add a board Obj to it
-        //Set up new board with boardId, boardName, boardLists (empty if new board)
-        var boardId = generateBoardId();
-        var boardName = "Board - " + boardId;
-        var boardObj = {
-            [boardId]: {
-                boardId: boardId,
-                boardName: boardName, 
-                boardOrder: 1,
-                boardLists: {}
-            }
-        }
 
-        boardObj = JSON.stringify(boardObj);
+    var boardId = generateBoardId();
+    var boardName = "Board - " + boardId;
 
-        window.localStorage.setItem("Boards", boardObj);
-        var newBtn = document.createElement("button");
-        newBtn.innerHTML = boardName;
-        newBtn.id = boardId;
+    var boardObj = {     
+        boardId: boardId,
+        boardName: boardName, 
+        boardColor: hexGenenrator(),
+        boardOrder: getOrder(),
+        boardLists: {}
+    }
 
-        document.getElementById("newBoardsDiv").appendChild(newBtn);
-    } else {
-        //Otherwise, there's boards already existing in memory, add a new board to that list and save it
-        var boardArr = JSON.parse(window.localStorage.getItem("Boards"));
-        console.log(boardArr);
-        var boardId = generateBoardId();
-        var boardName = "Board - " + boardId;
+    var boardArr = {
+        [boardId]: boardObj
+    }
 
-        var boardObj = {     
-            boardId: boardId,
-            boardName: boardName, 
-            boardOrder: Object.keys(boardArr).length + 1,
-            boardLists: {}
-        }
+    if(window.localStorage.length !== 0) {
+        //Boards already existing in memory, add new board to list.
+        boardArr = JSON.parse(window.localStorage.getItem("Boards"));
 
         boardArr[boardId] = boardObj;
-
-        boardArr = JSON.stringify(boardArr);
-
-        window.localStorage.setItem("Boards", boardArr);
-        var newBtn = document.createElement("button");
-        newBtn.innerHTML = boardName;
-        newBtn.id = boardId;
-
-        document.getElementById("newBoardsDiv").appendChild(newBtn);
     }
+
+    boardArr = JSON.stringify(boardArr);
+
+    window.localStorage.setItem("Boards", boardArr);
+
+    generateBoardBtn(boardName, boardId);
 }
 
 function generateBoardId() {
     return Math.floor(Math.random() * Math.floor(Math.random() * Date.now()));
+}
+
+function hexGenenrator() {
+    let n = (Math.random() * 0xfffff * 1000000).toString(16);
+    return '#' + n.slice(0, 6);
+}
+
+function generateBoardBtn(boardName, boardId) {
+    var newBtn = document.createElement("button");
+    newBtn.innerHTML = boardName;
+    newBtn.id = boardId;
+    document.getElementById("newBoardsDiv").appendChild(newBtn);
+}
+
+function getOrder() {
+    if(window.localStorage.length === 0) {
+        return 1;
+    } else {
+        var CurStorageLength = Object.keys(window.JSON.parse(window.localStorage.getItem("Boards"))).length;
+        return CurStorageLength + 1;
+    }
 }
