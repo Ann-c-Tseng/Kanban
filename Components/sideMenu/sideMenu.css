@@ -38,3 +38,20 @@
     display: flex;
     white-space: nowrap;
 }
+
+.boardBtn {
+    width: calc(100% - 20px);
+    margin-left: 20px;
+    margin-top: var(--margin);
+    margin-bottom: var(--margin);
+    border: none;
+    padding: var(--padding);
+    border-radius: 50px 0px 0px 50px;
+    color: white;
+    background-color: var(--boardBtn-colour);
+}
+
+.boardBtn:hover {
+    background-color: var(--accent-color-purple-hover);
+    cursor: pointer;
+}

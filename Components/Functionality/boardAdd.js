@@ -3,13 +3,15 @@ document.getElementById("createNewBoardBtn").addEventListener("click", createNew
 function createNewBoard() { 
 
     var boardId = generateBoardId();
-    var boardName = "Board - " + boardId;
+    var boardOrder = getOrder();
+    var boardName = "Board - " + boardOrder;
+    var boardColour = hexGenerator();
 
     var boardObj = {     
         boardId: boardId,
         boardName: boardName, 
-        boardColor: hexGenenrator(),
-        boardOrder: getOrder(),
+        boardColour: boardColour,
+        boardOrder: boardOrder,
         boardLists: {}
     }
 
@@ -28,22 +30,24 @@ function createNewBoard() {
 
     window.localStorage.setItem("Boards", boardArr);
 
-    generateBoardBtn(boardName, boardId);
+    generateBoardBtn(boardName, boardId, boardColour);
 }
 
 function generateBoardId() {
     return Math.floor(Math.random() * Math.floor(Math.random() * Date.now()));
 }
 
-function hexGenenrator() {
+function hexGenerator() {
     let n = (Math.random() * 0xfffff * 1000000).toString(16);
     return '#' + n.slice(0, 6);
 }
 
-function generateBoardBtn(boardName, boardId) {
+function generateBoardBtn(boardName, boardId, boardColour) {
     var newBtn = document.createElement("button");
     newBtn.innerHTML = boardName;
     newBtn.id = boardId;
+    newBtn.className = 'boardBtn';
+    newBtn.style = "--boardBtn-colour: " + boardColour;
     document.getElementById("newBoardsDiv").appendChild(newBtn);
 }
 
