@@ -15,4 +15,10 @@
     width: 10vw;
     height: auto;
     background-color: pink; 
+    display:flex;
+    flex-direction: column;
+}
+
+#newTaskForm label {
+    text-align: left;
 }
