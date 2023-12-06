@@ -17,6 +17,10 @@ function newTaskCreation() {
 }
 
 function newTaskPopup() {
+    var popupDiv = document.createElement("div");
+    popupDiv.id = "popupDiv";
+    document.getElementById("popupContainer").appendChild(popupDiv)
+
     var newTaskForm = document.createElement("form");
     newTaskForm.id = "newTaskForm";
     document.getElementById("popupDiv").appendChild(newTaskForm);
