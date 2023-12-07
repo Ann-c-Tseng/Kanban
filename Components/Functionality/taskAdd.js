@@ -37,29 +37,37 @@ function newTaskPopup() {
     ntfInputTitle.id = "ntfInputTitle";
     var ntfInputTitleLabel = document.createElement("label");
     ntfInputTitleLabel.htmlFor = "ntfInputTitle";
-    ntfInputTitleLabel.innerHTML = "Test1";
+    ntfInputTitleLabel.innerHTML = "Title";
 
     var ntfInputDescription = document.createElement("input");
     ntfInputDescription.id = "ntfInputDescription";
     var ntfInputDescriptionLabel = document.createElement("label");
     ntfInputDescriptionLabel.htmlFor = "ntfInputDescription";
-    ntfInputDescriptionLabel.innerHTML = "Test2";
+    ntfInputDescriptionLabel.innerHTML = "Description";
 
+    var subtaskDiv = document.createElement("div");
+    subtaskDiv.class = "subtaskDiv";
     var ntfInputSubtasks = document.createElement("input");
     ntfInputSubtasks.id = "ntfInputSubtasks";
+    var ntfInputSubtasksDelBtn = document.createElement("button");
+    ntfInputSubtasksDelBtn.id = "ntfInputSubtasksDelBtn";
+    ntfInputSubtasksDelBtn.innerHTML = "x";
+    subtaskDiv.appendChild(ntfInputSubtasks);
+    subtaskDiv.appendChild(ntfInputSubtasksDelBtn);
     var ntfInputSubtasksLabel = document.createElement("label");
     ntfInputSubtasksLabel.htmlFor = "ntfInputSubtasks";
-    ntfInputSubtasksLabel.innerHTML = "Test3";
+    ntfInputSubtasksLabel.innerHTML = "Subtasks";
 
     var ntfAddNewSubtaskBtn = document.createElement("button");
     ntfAddNewSubtaskBtn.innerHTML = "Add New Subtask"
     ntfAddNewSubtaskBtn.id = "ntfAddNewSubtaskBtn";
 
-    var ntfInputStatus = document.createElement("input");
+    var ntfInputStatus = document.createElement("select");
     ntfInputStatus.id = "ntfInputStatus";
+    //TODO: Grab the dropdown list options for select element and populate ntfInputStatus element
     var ntfInputStatusLabel = document.createElement("label");
     ntfInputStatusLabel.htmlFor = "ntfInputStatus";
-    ntfInputStatusLabel.innerHTML = "Test4";
+    ntfInputStatusLabel.innerHTML = "Status";
 
     var ntfCreateTaskBtn = document.createElement("button");
     ntfCreateTaskBtn.innerHTML = "Create Task Button"
@@ -72,7 +80,7 @@ function newTaskPopup() {
     newTaskForm.appendChild(ntfInputDescriptionLabel);
     newTaskForm.appendChild(ntfInputDescription);
     newTaskForm.appendChild(ntfInputSubtasksLabel);
-    newTaskForm.appendChild(ntfInputSubtasks);
+    newTaskForm.appendChild(subtaskDiv);
     newTaskForm.appendChild(ntfAddNewSubtaskBtn);
     newTaskForm.appendChild(ntfInputStatusLabel);
     newTaskForm.appendChild(ntfInputStatus);
