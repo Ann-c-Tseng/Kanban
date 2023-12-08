@@ -12,7 +12,7 @@ function createNewBoard() {
         boardName: boardName, 
         boardColour: boardColour,
         boardOrder: boardOrder,
-        boardLists: {}
+        boardLists: {},
     }
 
     var boardArr = {
