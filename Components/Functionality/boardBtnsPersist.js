@@ -1,8 +1,12 @@
+import {test} from './selectActiveBoard.js';
+
 persistBoardsBtnDisplay();
 
 function persistBoardsBtnDisplay() {
-    if(window.localStorage.length !== 0) {
-        displayBtnsExisting();
+    window.onload = () => {
+        if(window.localStorage.length !== 0) {
+            displayBtnsExisting();
+        }
     }
 }
 
@@ -30,6 +34,6 @@ function displayBtnsExisting() {
     };
 }
 
-function test() {
-    alert("hello");
-}
+// function test() {
+//     alert("hello");
+// }

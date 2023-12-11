@@ -1,3 +1,5 @@
+import {test} from './selectActiveBoard.js';
+
 document.getElementById("createNewBoardBtn").addEventListener("click", createNewBoard);
 
 function createNewBoard() { 
@@ -49,7 +51,7 @@ function generateBoardBtn(boardName, boardId, boardColour) {
     newBtn.className = 'boardBtn';
     newBtn.style = "--boardBtn-colour: " + boardColour;
 
-    newBtn.addEventListener("click", test)
+    newBtn.addEventListener("click", test);
     document.getElementById("newBoardsDiv").appendChild(newBtn);
 }
 
@@ -62,6 +64,6 @@ function getOrder() {
     }
 }
 
-function test() {
-    alert("hello");
-}
+// function test() {
+//     alert("hello");
+// }
