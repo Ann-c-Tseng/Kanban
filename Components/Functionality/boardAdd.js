@@ -1,4 +1,4 @@
-import {test} from './selectActiveBoard.js';
+import {boardBtnEvent} from './selectActiveBoard.js';
 
 document.getElementById("createNewBoardBtn").addEventListener("click", createNewBoard);
 
@@ -51,7 +51,7 @@ function generateBoardBtn(boardName, boardId, boardColour) {
     newBtn.className = 'boardBtn';
     newBtn.style = "--boardBtn-colour: " + boardColour;
 
-    newBtn.addEventListener("click", test);
+    newBtn.addEventListener("click", boardBtnEvent);
     document.getElementById("newBoardsDiv").appendChild(newBtn);
 }
 
