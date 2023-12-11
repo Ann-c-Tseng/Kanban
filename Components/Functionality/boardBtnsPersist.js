@@ -23,6 +23,13 @@ function displayBtnsExisting() {
         newBtn.id = boardId;
         newBtn.className = 'boardBtn';
         newBtn.style = "--boardBtn-colour: " + boardColour;
+
+        newBtn.addEventListener("click", test);
+
         document.getElementById("newBoardsDiv").appendChild(newBtn);
     };
+}
+
+function test() {
+    alert("hello");
 }

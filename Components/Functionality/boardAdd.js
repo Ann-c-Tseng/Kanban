@@ -48,6 +48,8 @@ function generateBoardBtn(boardName, boardId, boardColour) {
     newBtn.id = boardId;
     newBtn.className = 'boardBtn';
     newBtn.style = "--boardBtn-colour: " + boardColour;
+
+    newBtn.addEventListener("click", test)
     document.getElementById("newBoardsDiv").appendChild(newBtn);
 }
 
@@ -58,4 +60,8 @@ function getOrder() {
         var CurStorageLength = Object.keys(window.JSON.parse(window.localStorage.getItem("Boards"))).length;
         return CurStorageLength + 1;
     }
+}
+
+function test() {
+    alert("hello");
 }
