@@ -13,6 +13,6 @@
                 1. Task id
                 2. Task title
                 3. Task description
-                4. Task subtasks
+                4. Task subtask(s)
                 5. Task Status (i.e. what List this task belongs to on this particular board)
 */
