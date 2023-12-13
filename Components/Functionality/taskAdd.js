@@ -4,10 +4,10 @@ navBarBtnElement.addEventListener("click", createNewTask);
 
 function createNewTask() {
     //Create new tasks if boards exist, if not throw warning
-    if(window.localStorage.length !== 0) {
+    if(window.localStorage.length !== 0 && window.localStorage.getItem("ActiveBoardId") !== null) {
         newTaskCreation();
-    } else {
-        alert("There are no boards currently, please add a board first before adding a task");
+    }else {
+        alert("Please make sure your current board exists with lists, before adding a task.");
     }
 }
 

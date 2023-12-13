@@ -33,7 +33,3 @@ function displayBtnsExisting() {
         document.getElementById("newBoardsDiv").appendChild(newBtn);
     };
 }
-
-// function test() {
-//     alert("hello");
-// }

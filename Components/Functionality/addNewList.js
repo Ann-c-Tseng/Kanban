@@ -1,5 +1,7 @@
-document.getElementById("addListBtn").addEventListener("click",testing);
+document.getElementById("addListBtn").addEventListener("click", addNewList);
 
-function testing() {
-    alert("clicked!");
+function addNewList() {
+    //Get current active board
+
+    //
 }

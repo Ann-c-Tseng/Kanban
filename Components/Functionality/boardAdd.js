@@ -63,7 +63,3 @@ function getOrder() {
         return CurStorageLength + 1;
     }
 }
-
-// function test() {
-//     alert("hello");
-// }
