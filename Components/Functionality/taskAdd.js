@@ -6,7 +6,7 @@ function createNewTask() {
     //Create new tasks if boards exist, if not throw warning
     if(window.localStorage.length !== 0 && window.localStorage.getItem("ActiveBoardId") !== null) {
         newTaskCreation();
-    }else {
+    } else {
         alert("Please make sure your current board exists with lists, before adding a task.");
     }
 }
@@ -18,12 +18,12 @@ function newTaskCreation() {
 
 function newTaskPopup() {
     var popupDiv = document.createElement("div");
-    popupDiv.id = "popupDiv";
-    document.getElementById("popupContainer").appendChild(popupDiv)
+    popupDiv.id = "taskPopupDiv";
+    document.getElementById("popupContainer").appendChild(popupDiv);
 
     var newTaskForm = document.createElement("form");
     newTaskForm.id = "newTaskForm";
-    document.getElementById("popupDiv").appendChild(newTaskForm);
+    document.getElementById("taskPopupDiv").appendChild(newTaskForm);
 
     var ntfCloseBtn = document.createElement("button");
     ntfCloseBtn.innerHTML = "Close"
