@@ -15,7 +15,7 @@ function newListPopup() {
     newListForm.id = "newListForm";
     document.getElementById("listPopupDiv").appendChild(newListForm);
 
-    // var nlfCloseBtn = document.createElement("button");
+    var nlfCloseBtn = document.createElement("button");
     // nlfCloseBtn.innerHTML = "Close"
     // nlfCloseBtn.id = "nlfCloseBtn";
 
