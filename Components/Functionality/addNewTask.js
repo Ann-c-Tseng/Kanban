@@ -3,12 +3,19 @@ var navBarBtnElement = document.getElementById("navBarBtn");
 navBarBtnElement.addEventListener("click", createNewTask);
 
 function createNewTask() {
-    //Create new tasks if boards exist, if not throw warning
-    if(window.localStorage.length !== 0 && window.localStorage.getItem("ActiveBoardId") !== null) {
+    //Create new tasks if current board exist with list(s), if not throw warning
+    if(currentBoardHasLists()) {
         newTaskCreation();
     } else {
-        alert("Please make sure your current board exists with lists, before adding a task.");
+        alert("Please make sure the board you are currently on has at least one list.");
     }
+}
+
+function currentBoardHasLists() {
+    
+    var boards = JSON.parse(window.localStorage.getItem("Boards"));
+    var curBoardId = JSON.parse(window.localStorage.getItem("ActiveBoardId"));
+
 }
 
 function newTaskCreation() {
@@ -30,7 +37,7 @@ function newTaskPopup() {
     ntfCloseBtn.id = "ntfCloseBtn";
 
     var ntfTitle = document.createElement("h3");
-    ntfTitle.innerHTML = "Add New Task"
+    ntfTitle.innerHTML = "Add New Task";
     ntfTitle.id = "ntfTitle";
 
     var ntfInputTitle = document.createElement("input");
