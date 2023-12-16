@@ -4,7 +4,7 @@ persistBoardsBtnDisplay();
 
 function persistBoardsBtnDisplay() {
     window.onload = () => {
-        if(window.localStorage.length !== 0) {
+        if(window.localStorage.getItem("Boards") !== null) {
             displayBtnsExisting();
         }
     }

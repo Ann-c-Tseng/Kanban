@@ -21,7 +21,7 @@ function createNewBoard() {
         [boardId]: boardObj
     }
 
-    if(window.localStorage.length !== 0) {
+    if(window.localStorage.getItem("Boards") !== null) {
         //Boards already existing in memory, add new board to list.
         boardArr = JSON.parse(window.localStorage.getItem("Boards"));
 
@@ -56,9 +56,9 @@ function generateBoardBtn(boardName, boardId, boardColour) {
 }
 
 function getOrder() {
-    if(window.localStorage.length === 0) {
+    if(window.localStorage.getItem("Boards") === null) {
         return 1;
-    } else {
+    } else if(window.localStorage.getItem("Boards") !== null) {
         var CurStorageLength = Object.keys(window.JSON.parse(window.localStorage.getItem("Boards"))).length;
         return CurStorageLength + 1;
     }

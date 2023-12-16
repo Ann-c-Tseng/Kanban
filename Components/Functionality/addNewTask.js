@@ -12,10 +12,12 @@ function createNewTask() {
 }
 
 function currentBoardHasLists() {
-    
     var boards = JSON.parse(window.localStorage.getItem("Boards"));
     var curBoardId = JSON.parse(window.localStorage.getItem("ActiveBoardId"));
+    var curBoard = boards[curBoardId];
+    var bListsLength = Object.keys(curBoard["boardLists"]).length;
 
+    return bListsLength;
 }
 
 function newTaskCreation() {
