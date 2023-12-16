@@ -14,10 +14,22 @@ function createNewTask() {
 function currentBoardHasLists() {
     var boards = JSON.parse(window.localStorage.getItem("Boards"));
     var curBoardId = JSON.parse(window.localStorage.getItem("ActiveBoardId"));
-    var curBoard = boards[curBoardId];
-    var bListsLength = Object.keys(curBoard["boardLists"]).length;
 
-    return bListsLength;
+    if(boards !== null && JSON.stringify(curBoardId) !== null) {
+        var curBoard = boards[JSON.stringify(curBoardId)];
+        
+        var bListsLength = Object.keys(curBoard["boardLists"]).length;
+
+        if(bListsLength === 0) {
+            alert("no lists available on this board");
+            return bListsLength;
+        }
+
+        return bListsLength;
+    } else {
+        alert("return false in currentboardhaslists");
+        return false;
+    }
 }
 
 function newTaskCreation() {
@@ -94,6 +106,9 @@ function newTaskPopup() {
     newTaskForm.appendChild(ntfInputStatusLabel);
     newTaskForm.appendChild(ntfInputStatus);
     newTaskForm.appendChild(ntfCreateTaskBtn);
+
+    //Click events list
+
 }
 
 
