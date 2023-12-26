@@ -99,4 +99,6 @@ function saveListEvent(evt) {
 function closeListPopup(evt) {
     evt.preventDefault();
     console.log("close new list popup");
+    var popup = document.getElementById("listPopupDiv");
+    popup.remove();
 }
