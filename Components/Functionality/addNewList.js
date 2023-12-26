@@ -50,13 +50,14 @@ function addClickEventToListPopup(sBtnId, cBtnId) {
     closeBtn.addEventListener("click", closeListPopup);
 }
 
-function saveListEvent(evt) {
-    evt.preventDefault();
+function saveListEvent(Event) {
+    Event.preventDefault();
 
     //Get current board
     var curBoardId = window.localStorage.getItem("ActiveBoardId");
     var newListName = document.getElementById("nlfInput").value;
-    if(curBoardId !== null) {
+    console.log("newListName: " + newListName);
+    if(curBoardId !== null && newListName !== "") {
         var curBoard = JSON.parse(window.localStorage.getItem("Boards"))[curBoardId];
         console.log("Current board before list add: " + JSON.stringify(curBoard));
         var newListName = document.getElementById("nlfInput").value;
@@ -89,15 +90,17 @@ function saveListEvent(evt) {
         var boards = JSON.parse(window.localStorage.getItem("Boards"));
         boards[curBoardId] = curBoard;
         window.localStorage.setItem("Boards", JSON.stringify(boards));
+
+        closeListPopup(Event);
     } else if(newListName === "") {
-        alert("Please choose the list name")
+        alert("The list name cannot be nothing")
     } else {
        alert("Please select a board before adding a list");
     }
 }
 
-function closeListPopup(evt) {
-    evt.preventDefault();
+function closeListPopup(Event) {
+    Event.preventDefault();
     console.log("close new list popup");
     var popup = document.getElementById("listPopupDiv");
     popup.remove();
