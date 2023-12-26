@@ -55,38 +55,45 @@ function saveListEvent(evt) {
 
     //Get current board
     var curBoardId = window.localStorage.getItem("ActiveBoardId");
-    var curBoard = JSON.parse(window.localStorage.getItem("Boards"))[curBoardId];
-    console.log("Current board before list add: " + JSON.stringify(curBoard));
     var newListName = document.getElementById("nlfInput").value;
-
-    var newListObj = {
-        listName: newListName,
-        listItemsObj: {},
-        listOrder: 0
-    }
-
-    var curBoardNumLists = Object.keys(curBoard["boardLists"]).length;
-    //console.log("current board, number of lists: " + curBoardNumLists + " - current board: " + JSON.stringify(curBoard["boardLists"]));
+    if(curBoardId !== null) {
+        var curBoard = JSON.parse(window.localStorage.getItem("Boards"))[curBoardId];
+        console.log("Current board before list add: " + JSON.stringify(curBoard));
+        var newListName = document.getElementById("nlfInput").value;
     
-    //Update list order accordingly
-    newListObj["listOrder"] = curBoardNumLists + 1;
-
-    //Save list into current board
-    var lists = {
-        [newListName]: newListObj,
+        var newListObj = {
+            listName: newListName,
+            listItemsObj: {},
+            listOrder: 0
+        }
+    
+        var curBoardNumLists = Object.keys(curBoard["boardLists"]).length;
+        //console.log("current board, number of lists: " + curBoardNumLists + " - current board: " + JSON.stringify(curBoard["boardLists"]));
+        
+        //Update list order accordingly
+        newListObj["listOrder"] = curBoardNumLists + 1;
+    
+        //Save list into current board
+        var lists = {
+            [newListName]: newListObj,
+        }
+        if(curBoardNumLists > 0) {
+            //Lists already exist in board, append new list object to this board's lists object
+            lists = curBoard["boardLists"];
+            lists[newListName] = newListObj;
+        }
+        curBoard["boardLists"] = lists;
+        //console.log(JSON.stringify(curBoard));
+    
+        //Save board back into Boards object in local storage
+        var boards = JSON.parse(window.localStorage.getItem("Boards"));
+        boards[curBoardId] = curBoard;
+        window.localStorage.setItem("Boards", JSON.stringify(boards));
+    } else if(newListName === "") {
+        alert("Please choose the list name")
+    } else {
+       alert("Please select a board before adding a list");
     }
-    if(curBoardNumLists > 0) {
-        //Lists already exist in board, append new list object to this board's lists object
-        lists = curBoard["boardLists"];
-        lists[newListName] = newListObj;
-    }
-    curBoard["boardLists"] = lists;
-    //console.log(JSON.stringify(curBoard));
-
-    //Save board back into Boards object in local storage
-    var boards = JSON.parse(window.localStorage.getItem("Boards"));
-    boards[curBoardId] = curBoard;
-    window.localStorage.setItem("Boards", JSON.stringify(boards));
 }
 
 function closeListPopup(evt) {
