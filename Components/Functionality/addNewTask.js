@@ -71,7 +71,7 @@ function newTaskPopup() {
     var ntfInputSubtasks = document.createElement("input");
     ntfInputSubtasks.id = "ntfInputSubtasks";
     var ntfInputSubtasksDelBtn = document.createElement("button");
-    ntfInputSubtasksDelBtn.id = "ntfInputSubtasksDelBtn";
+    ntfInputSubtasksDelBtn.id = "ntfInputSubtasksDelBtn1";
     ntfInputSubtasksDelBtn.innerHTML = "x";
     subtaskDiv.appendChild(ntfInputSubtasks);
     subtaskDiv.appendChild(ntfInputSubtasksDelBtn);
@@ -86,6 +86,7 @@ function newTaskPopup() {
     var ntfInputStatus = document.createElement("select");
     ntfInputStatus.id = "ntfInputStatus";
     //TODO: Grab the dropdown list options for select element and populate ntfInputStatus element
+    populateStatusSelectDropdown();
     var ntfInputStatusLabel = document.createElement("label");
     ntfInputStatusLabel.htmlFor = "ntfInputStatus";
     ntfInputStatusLabel.innerHTML = "Status";
@@ -108,8 +109,46 @@ function newTaskPopup() {
     newTaskForm.appendChild(ntfCreateTaskBtn);
 
     //Click events list
-
+    ntfCloseBtn.addEventListener('click', closeTaskPopup);
+    ntfInputSubtasksDelBtn.addEventListener('click', subtaskDelete);
+    ntfAddNewSubtaskBtn.addEventListener('click', subtaskAdd);
+    ntfInputStatus.addEventListener('click', selectStatus);
+    ntfCreateTaskBtn.addEventListener('click', createTask);
 }
+
+function populateStatusSelectDropdown() {
+    
+}
+
+function closeTaskPopup(Event) {
+    Event.preventDefault();
+    var popup = document.getElementById("taskPopupDiv");
+    popup.remove();
+    console.log("close task popup");
+}
+
+function subtaskDelete(Event) {
+    Event.preventDefault();
+    console.log("subtask deleting...");
+}
+
+function subtaskAdd(Event) {
+    Event.preventDefault();
+    console.log("subtask adding...");
+}
+
+function selectStatus(Event) {
+    Event.preventDefault();
+    console.log("select status...");
+}
+
+function createTask(Event) {
+    Event.preventDefault();
+    console.log("create task...");
+}
+
+
+
 
 
 
