@@ -67,7 +67,8 @@ function newTaskPopup() {
     ntfInputDescriptionLabel.innerHTML = "Description";
 
     var subtaskDiv = document.createElement("div");
-    subtaskDiv.class = "subtaskDiv";
+    subtaskDiv.id = "subtaskDiv";
+
     var ntfInputSubtasks = document.createElement("input");
     ntfInputSubtasks.id = "ntfInputSubtasks";
     var ntfInputSubtasksDelBtn = document.createElement("button");
@@ -83,13 +84,24 @@ function newTaskPopup() {
     ntfAddNewSubtaskBtn.innerHTML = "Add New Subtask"
     ntfAddNewSubtaskBtn.id = "ntfAddNewSubtaskBtn";
 
-    var ntfInputStatus = document.createElement("select");
-    ntfInputStatus.id = "ntfInputStatus";
-    //TODO: Grab the dropdown list options for select element and populate ntfInputStatus element
-    populateStatusSelectDropdown();
-    var ntfInputStatusLabel = document.createElement("label");
-    ntfInputStatusLabel.htmlFor = "ntfInputStatus";
-    ntfInputStatusLabel.innerHTML = "Status";
+    // var ntfInputStatus = document.createElement("select");
+    // ntfInputStatus.id = "ntfInputStatus";
+    // var ntfInputStatusLabel = document.createElement("label");
+    // ntfInputStatusLabel.htmlFor = "ntfInputStatus";
+    // ntfInputStatusLabel.innerHTML = "Status";
+
+    const listNamesArr = grabCurrentBoardListNames();
+    console.log(listNamesArr);
+
+    const ntfSelect = document.createElement('select');
+    for (let i = 0; i < listNamesArr.length; i++) {
+        const option = document.createElement('option');
+        option.value = listNamesArr[i].value;
+        option.text = listNamesArr[i].text;
+        ntfSelect.appendChild(option);
+    }
+
+    console.log("hello")
 
     var ntfCreateTaskBtn = document.createElement("button");
     ntfCreateTaskBtn.innerHTML = "Create Task Button"
@@ -104,21 +116,31 @@ function newTaskPopup() {
     newTaskForm.appendChild(ntfInputSubtasksLabel);
     newTaskForm.appendChild(subtaskDiv);
     newTaskForm.appendChild(ntfAddNewSubtaskBtn);
-    newTaskForm.appendChild(ntfInputStatusLabel);
-    newTaskForm.appendChild(ntfInputStatus);
+
+    //newTaskForm.appendChild(ntfInputStatusLabel);
+    //newTaskForm.appendChild(ntfInputStatus);
+    newTaskForm.appendChild(ntfSelect);
+
     newTaskForm.appendChild(ntfCreateTaskBtn);
 
     //Click events list
     ntfCloseBtn.addEventListener('click', closeTaskPopup);
     ntfInputSubtasksDelBtn.addEventListener('click', subtaskDelete);
     ntfAddNewSubtaskBtn.addEventListener('click', subtaskAdd);
-    ntfInputStatus.addEventListener('click', selectStatus);
+    //ntfInputStatus.addEventListener('click', selectStatus);
     ntfCreateTaskBtn.addEventListener('click', createTask);
 }
 
-function populateStatusSelectDropdown() {
-    
+function grabCurrentBoardListNames() {
+    var curBoard = JSON.parse(window.localStorage.getItem("Boards"))[JSON.parse(window.localStorage.getItem("ActiveBoardId"))];
+    var curBoardListNames = Object.keys(curBoard["boardLists"]);
+    var listNameArr = [];
+    for(var i = 0; i < curBoardListNames.length; i++) {
+        listNameArr.push({value: 'option'+(i+1), text: curBoardListNames[i]})
+    }
+    return listNameArr;
 }
+
 
 function closeTaskPopup(Event) {
     Event.preventDefault();
