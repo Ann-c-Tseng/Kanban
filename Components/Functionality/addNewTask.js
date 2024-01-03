@@ -84,24 +84,21 @@ function newTaskPopup() {
     ntfAddNewSubtaskBtn.innerHTML = "Add New Subtask"
     ntfAddNewSubtaskBtn.id = "ntfAddNewSubtaskBtn";
 
-    // var ntfInputStatus = document.createElement("select");
-    // ntfInputStatus.id = "ntfInputStatus";
-    // var ntfInputStatusLabel = document.createElement("label");
-    // ntfInputStatusLabel.htmlFor = "ntfInputStatus";
-    // ntfInputStatusLabel.innerHTML = "Status";
+    var ntfInputStatusLabel = document.createElement("label");
+    ntfInputStatusLabel.htmlFor = "ntfSelect";
+    ntfInputStatusLabel.innerHTML = "Status";
 
     const listNamesArr = grabCurrentBoardListNames();
     console.log(listNamesArr);
 
     const ntfSelect = document.createElement('select');
+    ntfSelect.id = "ntfSelect";
     for (let i = 0; i < listNamesArr.length; i++) {
         const option = document.createElement('option');
         option.value = listNamesArr[i].value;
         option.text = listNamesArr[i].text;
         ntfSelect.appendChild(option);
     }
-
-    console.log("hello")
 
     var ntfCreateTaskBtn = document.createElement("button");
     ntfCreateTaskBtn.innerHTML = "Create Task Button"
@@ -117,8 +114,7 @@ function newTaskPopup() {
     newTaskForm.appendChild(subtaskDiv);
     newTaskForm.appendChild(ntfAddNewSubtaskBtn);
 
-    //newTaskForm.appendChild(ntfInputStatusLabel);
-    //newTaskForm.appendChild(ntfInputStatus);
+    newTaskForm.appendChild(ntfInputStatusLabel);
     newTaskForm.appendChild(ntfSelect);
 
     newTaskForm.appendChild(ntfCreateTaskBtn);
@@ -127,7 +123,7 @@ function newTaskPopup() {
     ntfCloseBtn.addEventListener('click', closeTaskPopup);
     ntfInputSubtasksDelBtn.addEventListener('click', subtaskDelete);
     ntfAddNewSubtaskBtn.addEventListener('click', subtaskAdd);
-    //ntfInputStatus.addEventListener('click', selectStatus);
+    ntfSelect.addEventListener('click', selectStatus);
     ntfCreateTaskBtn.addEventListener('click', createTask);
 }
 
@@ -157,6 +153,16 @@ function subtaskDelete(Event) {
 function subtaskAdd(Event) {
     Event.preventDefault();
     console.log("subtask adding...");
+
+    var ntfInputSubtasks = document.createElement("input");
+    ntfInputSubtasks.id = "ntfInputSubtasks";
+    var ntfInputSubtasksDelBtn = document.createElement("button");
+    ntfInputSubtasksDelBtn.id = "ntfInputSubtasksDelBtn1";
+    ntfInputSubtasksDelBtn.innerHTML = "x";
+
+    var subtaskDiv = document.getElementById("subtaskDiv");
+    subtaskDiv.appendChild(ntfInputSubtasks);
+    subtaskDiv.appendChild(ntfInputSubtasksDelBtn);
 }
 
 function selectStatus(Event) {
