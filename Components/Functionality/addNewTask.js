@@ -161,12 +161,6 @@ function subtaskAdd(Event) {
     Event.preventDefault();
     console.log("subtask adding...");
 
-    // var ntfInputSubtasks = document.createElement("input");
-    // ntfInputSubtasks.id = "ntfInputSubtasks";
-    // var ntfInputSubtasksDelBtn = document.createElement("button");
-    // ntfInputSubtasksDelBtn.id = "ntfInputSubtasksDelBtn1";
-    // ntfInputSubtasksDelBtn.innerHTML = "x";
-
     var subtaskId = createSubtaskId();
     var ntfInputSubtasks = document.createElement("input");
     ntfInputSubtasks.id = subtaskId;
