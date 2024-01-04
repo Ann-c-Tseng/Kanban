@@ -69,13 +69,16 @@ function newTaskPopup() {
     var subtaskDiv = document.createElement("div");
     subtaskDiv.id = "subtaskDiv";
 
+    //FIRST SUBTASK CREATION
+    var subtaskId = createSubtaskId();
     var ntfInputSubtasks = document.createElement("input");
-    ntfInputSubtasks.id = "ntfInputSubtasks";
+    ntfInputSubtasks.id = subtaskId;
     var ntfInputSubtasksDelBtn = document.createElement("button");
-    ntfInputSubtasksDelBtn.id = "ntfInputSubtasksDelBtn1";
+    ntfInputSubtasksDelBtn.id = subtaskId+"_DelBtn";
     ntfInputSubtasksDelBtn.innerHTML = "x";
     subtaskDiv.appendChild(ntfInputSubtasks);
     subtaskDiv.appendChild(ntfInputSubtasksDelBtn);
+
     var ntfInputSubtasksLabel = document.createElement("label");
     ntfInputSubtasksLabel.htmlFor = "ntfInputSubtasks";
     ntfInputSubtasksLabel.innerHTML = "Subtasks";
@@ -127,6 +130,10 @@ function newTaskPopup() {
     ntfCreateTaskBtn.addEventListener('click', createTask);
 }
 
+function createSubtaskId() {
+    return "subtask_" + Math.floor(Math.random() * Math.floor(Math.random() * Date.now()));
+}
+
 function grabCurrentBoardListNames() {
     var curBoard = JSON.parse(window.localStorage.getItem("Boards"))[JSON.parse(window.localStorage.getItem("ActiveBoardId"))];
     var curBoardListNames = Object.keys(curBoard["boardLists"]);
@@ -154,10 +161,17 @@ function subtaskAdd(Event) {
     Event.preventDefault();
     console.log("subtask adding...");
 
+    // var ntfInputSubtasks = document.createElement("input");
+    // ntfInputSubtasks.id = "ntfInputSubtasks";
+    // var ntfInputSubtasksDelBtn = document.createElement("button");
+    // ntfInputSubtasksDelBtn.id = "ntfInputSubtasksDelBtn1";
+    // ntfInputSubtasksDelBtn.innerHTML = "x";
+
+    var subtaskId = createSubtaskId();
     var ntfInputSubtasks = document.createElement("input");
-    ntfInputSubtasks.id = "ntfInputSubtasks";
+    ntfInputSubtasks.id = subtaskId;
     var ntfInputSubtasksDelBtn = document.createElement("button");
-    ntfInputSubtasksDelBtn.id = "ntfInputSubtasksDelBtn1";
+    ntfInputSubtasksDelBtn.id = subtaskId+"_DelBtn";
     ntfInputSubtasksDelBtn.innerHTML = "x";
 
     var subtaskDiv = document.getElementById("subtaskDiv");
